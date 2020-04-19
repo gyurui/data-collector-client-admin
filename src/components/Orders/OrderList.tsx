@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Order } from "@models/OrderInterface";
-import { StateType } from "@models/RootInterface";
+import { StateType } from "../../models/RootInterface";
+import { Order } from "../../models/OrderInterface";
 
 const OrderList: React.FC = () => {
     const orders: Order[] = useSelector((state: StateType) => state.orders.orders);

@@ -1,9 +1,9 @@
 import React, { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StateType } from "@models/RootInterface";
-import { Notification } from "@models/NotificationInterface";
-import { removeNotification } from "@actions/NotificationsActions";
-import { ReduxActions } from "@actions/ReduxActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { StateType } from "../../models/RootInterface";
+import { removeNotification } from "../../actions/NotificationsActions";
+import { Notification } from "../../models/NotificationInterface";
 
 const Notifications: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

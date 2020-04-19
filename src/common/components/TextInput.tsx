@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { TextInputProps } from "@models/TextInputTypes";
+import { TextInputProps } from "../../models/TextInputTypes";
 
 function TextInput(props: TextInputProps): JSX.Element {
     const [touched, setTouch] = useState(false);

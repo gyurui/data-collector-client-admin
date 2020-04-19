@@ -6,7 +6,7 @@ import Users from "../Users/Users";
 import Products from "../Products/Products";
 import Orders from "../Orders/Orders";
 import Home from "../Home/Home";
-import Notifications from "@common/components/Notification";
+import Notifications from "../../common/components/Notification";
 
 const Admin: React.FC = () => {
     return (

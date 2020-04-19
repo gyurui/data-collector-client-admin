@@ -1,6 +1,6 @@
-import { Account } from "@models/AccountInterface";
-import { AccountActionTypeName } from "@actions/AccountActions";
-import { ReduxActions } from "@actions/ReduxActions";
+import { ReduxActions } from "../actions/ReduxActions";
+import { AccountActionTypeName } from "../actions/AccountActions";
+import { Account } from "../models/AccountInterface";
 
 const initialState: Account = {
     email: "admin@gmail.com",

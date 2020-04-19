@@ -1,12 +1,12 @@
 import { combineReducers, Reducer } from "redux";
-import { RootStateType, StateType } from "@models/RootInterface";
 import productsReducer from "./ProductsReducer";
 import notificationReducer from "./NotificationReducer";
 import userReducer from "./UsersReducer";
 import orderReducer from "./OrderReducer";
 import accountReducer from "./AccountReducer";
-import { ReduxActions } from "@actions/ReduxActions";
-import { RootActionsTypesName } from "@actions/RootActions";
+import { RootStateType, StateType } from "../models/RootInterface";
+import { ReduxActions } from "../actions/ReduxActions";
+import { RootActionsTypesName } from "../actions/RootActions";
 
 const initialState: RootStateType = {
     page: { area: "home", subArea: "" },

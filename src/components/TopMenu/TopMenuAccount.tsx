@@ -1,8 +1,8 @@
 import React, { useState, Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "@actions/AccountActions";
-import { StateType } from "@models/RootInterface";
-import { ReduxActions } from "@actions/ReduxActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { StateType } from "../../models/RootInterface";
+import { logout } from "../../actions/AccountActions";
 
 function TopMenuAccount(): JSX.Element {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

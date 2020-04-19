@@ -1,15 +1,15 @@
 import React, { useState, FormEvent, Dispatch, Fragment } from "react";
-import { StateType, ProductState } from "@models/RootInterface";
 import { useSelector, useDispatch } from "react-redux";
-import { Product, ProductModificationStatus } from "@models/ProductInterface";
-import TextInput from "@common/components/TextInput";
-import NumberInput from "@common/components/NumberInput";
-import Checkbox from "@common/components/Checkbox";
-import SelectInput from "@common/components/Select";
-import { OnChangeModel, ProductFormState } from "@models/FormTypes";
-import { ReduxActions } from "@actions/ReduxActions";
-import { addProduct, clearSelectedProduct, editProduct, setModificationState } from "@actions/ProductsActions";
-import { addNotification } from "@actions/NotificationsActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { ProductState, StateType } from "../../models/RootInterface";
+import { Product, ProductModificationStatus } from "../../models/ProductInterface";
+import { OnChangeModel, ProductFormState } from "../../models/FormTypes";
+import { addProduct, clearSelectedProduct, editProduct, setModificationState } from "../../actions/ProductsActions";
+import { addNotification } from "../../actions/NotificationsActions";
+import TextInput from "../../common/components/TextInput";
+import NumberInput from "../../common/components/NumberInput";
+import Checkbox from "../../common/components/Checkbox";
+import SelectInput from "../../common/components/Select";
 
 const ProductForm: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

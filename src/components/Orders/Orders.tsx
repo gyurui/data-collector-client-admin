@@ -1,15 +1,15 @@
 import React, { Fragment, Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentPath } from "@actions/RootActions";
-import { Order } from "@models/OrderInterface";
 import OrderList from "./OrderList";
-import TopCard from "@common/components/TopCard";
 import OrderForm from "./OrderForm";
 import ProductList from "../Products/ProductsList";
-import { Product } from "@models/ProductInterface";
-import { StateType } from "@models/RootInterface";
-import { ReduxActions } from "@actions/ReduxActions";
-import { changeSelectedProduct, clearSelectedProduct } from "@actions/ProductsActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { Order } from "../../models/OrderInterface";
+import { StateType } from "../../models/RootInterface";
+import { updateCurrentPath } from "../../actions/RootActions";
+import { changeSelectedProduct, clearSelectedProduct } from "../../actions/ProductsActions";
+import { Product } from "../../models/ProductInterface";
+import TopCard from "../../common/components/TopCard";
 
 const Orders: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

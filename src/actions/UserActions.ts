@@ -1,4 +1,4 @@
-import { User } from "@models/UserInterface";
+import { User } from "../models/UserInterface";
 
 export enum UserActionsTypeName {
     addAdmin = "ADD_ADMIN",

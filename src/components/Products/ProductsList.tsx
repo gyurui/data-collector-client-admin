@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { StateType, ProductState } from "@models/RootInterface";
-import { Product } from "@models/ProductInterface";
+import { ProductState, StateType } from "../../models/RootInterface";
+import { Product } from "../../models/ProductInterface";
 
 export type productListProps = {
     onSelect?: (product: Product) => void;

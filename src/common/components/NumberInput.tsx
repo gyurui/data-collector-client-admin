@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { NumberInputProps } from "@models/NumberInputTypes";
+import { NumberInputProps } from "../../models/NumberInputTypes";
 
 function NumberInput(props: NumberInputProps): JSX.Element {
     const [touched, setTouch] = useState(false);

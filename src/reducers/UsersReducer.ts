@@ -1,6 +1,6 @@
-import { UserState } from "@models/RootInterface";
-import { UserActionsTypeName } from "@actions/UserActions";
-import { ReduxActions } from "@actions/ReduxActions";
+import { UserState } from "../models/RootInterface";
+import { ReduxActions } from "../actions/ReduxActions";
+import { UserActionsTypeName } from "../actions/UserActions";
 
 const initialState: UserState = {
     users: [

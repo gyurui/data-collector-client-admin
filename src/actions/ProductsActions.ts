@@ -1,4 +1,4 @@
-import { Product, ProductModificationStatus } from "@models/ProductInterface";
+import { Product, ProductModificationStatus } from "../models/ProductInterface";
 
 export enum ProductsActionsTypeName {
     addProduct = "ADD_PRODUCT",

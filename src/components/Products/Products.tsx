@@ -1,16 +1,16 @@
 import React, { Fragment, Dispatch, useState, useEffect } from "react";
 import ProductList from "./ProductsList";
 import ProductForm from "./ProductsForm";
-import TopCard from "@common/components/TopCard";
 import "./Products.css";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentPath } from "@actions/RootActions";
-import { ProductState, StateType, RootPageStateType } from "@models/RootInterface";
 import Popup from "reactjs-popup";
-import { removeProduct, clearSelectedProduct, setModificationState, changeSelectedProduct } from "@actions/ProductsActions";
-import { ProductModificationStatus, Product } from "@models/ProductInterface";
-import { ReduxActions } from "@actions/ReduxActions";
-import { addNotification } from "@actions/NotificationsActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { ProductState, RootPageStateType, StateType } from "../../models/RootInterface";
+import { changeSelectedProduct, clearSelectedProduct, removeProduct, setModificationState } from "../../actions/ProductsActions";
+import { updateCurrentPath } from "../../actions/RootActions";
+import { Product, ProductModificationStatus } from "../../models/ProductInterface";
+import TopCard from "../../common/components/TopCard";
+import { addNotification } from "../../actions/NotificationsActions";
 
 const Products: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

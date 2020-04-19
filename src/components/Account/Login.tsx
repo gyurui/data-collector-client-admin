@@ -1,9 +1,9 @@
 import React, { useState, FormEvent, Dispatch } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "@actions/AccountActions";
-import TextInput from "@common/components/TextInput";
-import { ReduxActions } from "@actions/ReduxActions";
-import { OnChangeModel } from "@models/FormTypes";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { OnChangeModel } from "../../models/FormTypes";
+import TextInput from "../../common/components/TextInput";
+import { login } from "../../actions/AccountActions";
 
 const Login: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

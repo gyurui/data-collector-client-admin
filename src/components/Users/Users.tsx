@@ -1,11 +1,11 @@
 import React, { Fragment, Dispatch } from "react";
-import TopCard from "@common/components/TopCard";
-import { User } from "@models/UserInterface";
 import { useDispatch, useSelector } from "react-redux";
-import { StateType } from "@models/RootInterface";
-import { addAdmin, removeAdmin } from "@actions/UserActions";
-import { updateCurrentPath } from "@actions/RootActions";
-import { ReduxActions } from "@actions/ReduxActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { updateCurrentPath } from "../../actions/RootActions";
+import { User } from "../../models/UserInterface";
+import { StateType } from "../../models/RootInterface";
+import { addAdmin, removeAdmin } from "../../actions/UserActions";
+import TopCard from "../../common/components/TopCard";
 
 const Users: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

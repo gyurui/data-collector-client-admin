@@ -2,7 +2,7 @@ import React from "react";
 import TopMenuAccount from "./TopMenuAccount";
 import "./TopMenu.css";
 import { useSelector } from "react-redux";
-import { StateType, RootPageStateType } from "@models/RootInterface";
+import { RootPageStateType, StateType } from "../../models/RootInterface";
 
 const TopMenu: React.FC = () => {
     const page: RootPageStateType = useSelector((state: StateType) => state.root.page);

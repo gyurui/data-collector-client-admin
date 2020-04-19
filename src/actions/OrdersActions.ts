@@ -1,4 +1,4 @@
-import { Order } from "@models/OrderInterface";
+import { Order } from "../models/OrderInterface";
 
 export enum OrdersActionsTypeName {
     addOrder = "ADD_ORDER",

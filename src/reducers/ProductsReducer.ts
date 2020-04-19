@@ -1,7 +1,7 @@
-import { ProductState } from "@models/RootInterface";
-import { Product, ProductModificationStatus } from "@models/ProductInterface";
-import { ProductsActionsTypeName } from "@actions/ProductsActions";
-import { ReduxActions } from "@actions/ReduxActions";
+import { ProductState } from "../models/RootInterface";
+import { Product, ProductModificationStatus } from "../models/ProductInterface";
+import { ProductsActionsTypeName } from "../actions/ProductsActions";
+import { ReduxActions } from "../actions/ReduxActions";
 
 const initialState: ProductState = {
     modificationState: ProductModificationStatus.None,

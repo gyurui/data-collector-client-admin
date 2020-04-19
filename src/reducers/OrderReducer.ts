@@ -1,6 +1,6 @@
-import { OrdersState } from "@models/RootInterface";
-import { ReduxActions } from "@actions/ReduxActions";
-import { OrdersActionsTypeName } from "@actions/OrdersActions";
+import { OrdersState } from "../models/RootInterface";
+import { ReduxActions } from "../actions/ReduxActions";
+import { OrdersActionsTypeName } from "../actions/OrdersActions";
 
 const initialState: OrdersState = {
     orders: [

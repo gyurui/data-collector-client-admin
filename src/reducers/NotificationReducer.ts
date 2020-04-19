@@ -1,6 +1,6 @@
-import { NotificationState } from "@models/RootInterface";
-import { ReduxActions } from "@actions/ReduxActions";
-import { NotificationsActionTypeName } from "@actions/NotificationsActions";
+import { NotificationState } from "../models/RootInterface";
+import { ReduxActions } from "../actions/ReduxActions";
+import { NotificationsActionTypeName } from "../actions/NotificationsActions";
 
 const initialState: NotificationState = {
     notifications: [{ id: 1, date: new Date(), text: "Hello new user", title: "Welcome" }],

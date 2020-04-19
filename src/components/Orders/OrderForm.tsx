@@ -1,14 +1,14 @@
 import React, { useState, FormEvent, Fragment, Dispatch } from "react";
-import { Product } from "@models/ProductInterface";
-import TextInput from "@common/components/TextInput";
-import NumberInput from "@common/components/NumberInput";
-import { OnChangeModel, OrderFormState } from "@models/FormTypes";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder } from "@actions/OrdersActions";
-import { StateType } from "@models/RootInterface";
-import { ReduxActions } from "@actions/ReduxActions";
-import { addNotification } from "@actions/NotificationsActions";
-import { changeProductAmount, clearSelectedProduct } from "@actions/ProductsActions";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { Product } from "../../models/ProductInterface";
+import { StateType } from "../../models/RootInterface";
+import { OnChangeModel, OrderFormState } from "../../models/FormTypes";
+import { addOrder } from "../../actions/OrdersActions";
+import { addNotification } from "../../actions/NotificationsActions";
+import { changeProductAmount, clearSelectedProduct } from "../../actions/ProductsActions";
+import TextInput from "../../common/components/TextInput";
+import NumberInput from "../../common/components/NumberInput";
 
 const OrderForm: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

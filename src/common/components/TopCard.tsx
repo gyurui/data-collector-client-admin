@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactElement } from "react";
-import { CardProperties } from "@models/TopCardTypes";
+import { CardProperties } from "../../models/TopCardTypes";
 
 function TopCard(props: PropsWithChildren<CardProperties>): ReactElement {
     return (

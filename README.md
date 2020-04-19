@@ -5,8 +5,8 @@
 Clone repository
 
 ```shell
-$ git clone https://github.com/delprzemo/react-admin-template.git React-Admin-Template
-$ cd React-Admin-Template
+$ https://github.com/gyurui/data-collector-client-admin
+$ cd data-collector-client-admin
 ```
 
 #### 2. Run `npm install`
