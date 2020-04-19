@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from "react";
-import { ICardProperties } from "../types/TopCardTypes";
+import { CardProperties } from "@models/TopCardTypes";
 
-function TopCard(props: PropsWithChildren<ICardProperties>): ReactElement {
+function TopCard(props: PropsWithChildren<CardProperties>): ReactElement {
     return (
         <div className="col-xl-3 col-md-6 mb-4">
             <div className={`card border-left-${props.class} shadow h-100 py-2 `}>
@@ -12,7 +12,7 @@ function TopCard(props: PropsWithChildren<ICardProperties>): ReactElement {
                             <div className="h5 mb-0 font-weight-bold text-gray-800">{props.text}</div>
                         </div>
                         <div className="col-auto">
-                            <i className={`fas fa-${props.icon} fa-2x text-gray-300`}></i>
+                            <i className={`fas fa-${props.icon} fa-2x text-gray-300`} />
                         </div>
                     </div>
                 </div>
@@ -20,6 +20,5 @@ function TopCard(props: PropsWithChildren<ICardProperties>): ReactElement {
         </div>
     );
 }
-
 
 export default TopCard;

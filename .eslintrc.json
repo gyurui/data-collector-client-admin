@@ -1,0 +1,31 @@
+{
+  "extends": ["./node_modules/gts/", "plugin:react/recommended"],
+  "rules": {
+    "node/no-extraneous-import": ["off", {
+      "allowModules": [],
+      "resolvePaths": [],
+      "tryExtensions": []
+    }],
+    "node/no-unsupported-features/node-builtins": ["error", {
+      "version": ">=10.0.0",
+      "ignores": []
+    }],
+    "quotes": ["warn", "double", { "avoidEscape": true }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {}
+    },
+    "react": {
+      "version": "latest"
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  }
+}

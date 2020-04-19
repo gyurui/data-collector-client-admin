@@ -1,14 +1,13 @@
 import { Route, Redirect, RouteProps } from "react-router";
 import React from "react";
 import { useSelector } from "react-redux";
-import { IStateType } from "../../store/models/root.interface";
-import { IAccount } from "../../store/models/account.interface";
-import Login from "../../components/Account/Login";
+import { StateType } from "@models/RootInterface";
+import { Account } from "@models/AccountInterface";
+import Login from "@components/Account/Login";
 
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function AccountRoute({ children, ...rest }: RouteProps): JSX.Element {
-
-    const account: IAccount = useSelector((state: IStateType) => state.account);
+    const account: Account = useSelector((state: StateType) => state.account);
 
     return (
         <Route
@@ -17,10 +16,12 @@ export function AccountRoute({ children, ...rest }: RouteProps): JSX.Element {
                 account.email ? (
                     <Redirect
                         to={{
-                            pathname: "/admin/home"
+                            pathname: "/admin/home",
                         }}
                     />
-                ) : <Login />
+                ) : (
+                    <Login />
+                )
             }
         />
     );

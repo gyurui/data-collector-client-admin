@@ -1,0 +1,35 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@actions/*": [
+        "actions/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@models/*": [
+        "models/*"
+      ],
+      "@reducers/*": [
+        "reducers/*"
+      ],
+      "@screens/*": [
+        "screens/*"
+      ],
+      "@selectors/*": [
+        "selectors/*"
+      ],
+      "@common/*": [
+        "common/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ]
+    }
+  }
+}

@@ -2,74 +2,67 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
 const LeftMenu: React.FC = () => {
-
-    let [leftMenuVisibility, setLeftMenuVisibility] = useState(false);
+    const [leftMenuVisibility, setLeftMenuVisibility] = useState(false);
 
     function changeLeftMenuVisibility() {
         setLeftMenuVisibility(!leftMenuVisibility);
     }
 
     function getCollapseClass() {
-        return (leftMenuVisibility) ? "" : "collapsed";
+        return leftMenuVisibility ? "" : "collapsed";
     }
 
     return (
         <Fragment>
             <div className="toggle-area">
                 <button className="btn btn-primary toggle-button" onClick={() => changeLeftMenuVisibility()}>
-                    <i className="fas fa-bolt"></i>
+                    <i className="fas fa-bolt" />
                 </button>
             </div>
 
-            <ul className={`navbar-nav bg-gradient-primary-green sidebar sidebar-dark accordion ${getCollapseClass()}`}
-                id="collapseMenu">
-
+            <ul className={`navbar-nav bg-gradient-primary-green sidebar sidebar-dark accordion ${getCollapseClass()}`} id="collapseMenu">
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                     <div className="sidebar-brand-icon icon-green rotate-n-15">
-                        <i className="fas fa-bolt"></i>
+                        <i className="fas fa-bolt" />
                     </div>
-                    <div className="sidebar-brand-text mx-3">REACT <sup>Admin</sup></div>
+                    <div className="sidebar-brand-text mx-3">
+                        REACT <sup>Admin</sup>
+                    </div>
                 </a>
 
                 <hr className="sidebar-divider my-0" />
 
                 <li className="nav-item active">
-
                     <Link className="nav-link" to="Home">
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                        <i className="fas fa-fw fa-tachometer-alt" />
                         <span>Dashboard</span>
                     </Link>
                 </li>
 
                 <hr className="sidebar-divider" />
-                <div className="sidebar-heading">
-                    Warehouse
-                </div>
+                <div className="sidebar-heading">Warehouse</div>
 
                 <li className="nav-item">
-                    <Link className="nav-link" to={`/products`}>
-                        <i className="fas fa-fw fa-warehouse"></i>
+                    <Link className="nav-link" to={"/products"}>
+                        <i className="fas fa-fw fa-warehouse" />
                         <span>Products</span>
                     </Link>
                 </li>
 
                 <li className="nav-item">
-                    <Link className="nav-link" to={`/orders`}>
-                        <i className="fas fa-fw fa-cat"></i>
+                    <Link className="nav-link" to={"/orders"}>
+                        <i className="fas fa-fw fa-cat" />
                         <span>Orders</span>
                     </Link>
                 </li>
 
                 <hr className="sidebar-divider" />
 
-                <div className="sidebar-heading">
-                    Admin
-                </div>
-
+                <div className="sidebar-heading">Admin</div>
 
                 <li className="nav-item">
-                    <Link className="nav-link" to={`/users`}>
-                        <i className="fas fa-fw fa-user"></i>
+                    <Link className="nav-link" to={"/users"}>
+                        <i className="fas fa-fw fa-user" />
                         <span>Users</span>
                     </Link>
                 </li>

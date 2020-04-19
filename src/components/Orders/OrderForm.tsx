@@ -1,18 +1,19 @@
 import React, { useState, FormEvent, Fragment, Dispatch } from "react";
-import { IProduct } from "../../store/models/product.interface";
-import TextInput from "../../common/components/TextInput";
-import NumberInput from "../../common/components/NumberInput";
-import { OnChangeModel, IOrderFormState } from "../../common/types/FormTypes";
+import { Product } from "@models/ProductInterface";
+import TextInput from "@common/components/TextInput";
+import NumberInput from "@common/components/NumberInput";
+import { OnChangeModel, OrderFormState } from "@models/FormTypes";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder } from "../../store/actions/OrdersActions";
-import { addNotification } from "../../store/actions/NotificationsAction";
-import { clearSelectedProduct, changeProductAmount } from "../../store/actions/ProductsAction";
-import { IStateType } from "../../store/models/root.interface";
+import { addOrder } from "@actions/OrdersActions";
+import { StateType } from "@models/RootInterface";
+import { ReduxActions } from "@actions/ReduxActions";
+import { addNotification } from "@actions/NotificationsActions";
+import { changeProductAmount, clearSelectedProduct } from "@actions/ProductsActions";
 
 const OrderForm: React.FC = () => {
-    const dispatch: Dispatch<any> = useDispatch();
-    const selectedProduct: IProduct | null = useSelector((state: IStateType) => state.products.selectedProduct);
-    const initialFormState: IOrderFormState = {
+    const dispatch: Dispatch<ReduxActions> = useDispatch();
+    const selectedProduct: Product | null = useSelector((state: StateType) => state.products.selectedProduct);
+    const initialFormState: OrderFormState = {
         name: { error: "", value: "" },
         product: { error: "", value: null },
         amount: { error: "", value: 0 },
@@ -30,13 +31,15 @@ const OrderForm: React.FC = () => {
         setFormState({
             ...formState,
             amount: { error: model.error, value: model.value as number },
-            totalPrice: { error: model.error, value: totalPrice }
+            totalPrice: { error: model.error, value: totalPrice },
         });
-
     }
 
     function hasFormValueChanged(model: OnChangeModel): void {
-        setFormState({ ...formState, [model.field]: { error: model.error, value: model.value } });
+        setFormState({
+            ...formState,
+            [model.field]: { error: model.error, value: model.value },
+        });
     }
 
     function resetForm(): void {
@@ -52,7 +55,7 @@ const OrderForm: React.FC = () => {
         saveForm(formState);
     }
 
-    function saveForm(formState: IOrderFormState): void {
+    function saveForm(formState: OrderFormState): void {
         if (selectedProduct) {
             if (selectedProduct.amount < formState.amount.value) {
                 alert("Not enough products in warehouse");
@@ -60,13 +63,15 @@ const OrderForm: React.FC = () => {
             }
 
             formState.product.value = selectedProduct;
-            dispatch(addOrder({
-                id: 0,
-                name: formState.name.value,
-                amount: formState.amount.value,
-                totalPrice: formState.totalPrice.value,
-                product: formState.product.value as IProduct
-            }));
+            dispatch(
+                addOrder({
+                    id: 0,
+                    name: formState.name.value,
+                    amount: formState.amount.value,
+                    totalPrice: formState.totalPrice.value,
+                    product: formState.product.value as Product,
+                }),
+            );
 
             dispatch(addNotification("Order added", `Order ${formState.name.value} added by you`));
             dispatch(clearSelectedProduct());
@@ -76,13 +81,11 @@ const OrderForm: React.FC = () => {
     }
 
     function isFormInvalid(): boolean {
-        return (formState.amount.error || formState.totalPrice.error
-            || formState.name.error || formState.product.error || !formState.name.value
-            || !selectedProduct) as boolean;
+        return (formState.amount.error || formState.totalPrice.error || formState.name.error || formState.product.error || !formState.name.value || !selectedProduct) as boolean;
     }
 
     function getDisabledClass(): string {
-        let isError: boolean =  isFormInvalid();
+        const isError: boolean = isFormInvalid();
         return isError ? "disabled" : "";
     }
 
@@ -96,37 +99,22 @@ const OrderForm: React.FC = () => {
                     <form onSubmit={saveOrder}>
                         <div className="form-row">
                             <div className="form-group col-md-12">
-                                <TextInput id="input_name"
-                                    value={formState.name.value}
-                                    field="name"
-                                    onChange={hasFormValueChanged}
-                                    required={true}
-                                    maxLength={20}
-                                    label="Name"
-                                    placeholder="Name" />
+                                <TextInput id="input_name" value={formState.name.value} field="name" onChange={hasFormValueChanged} required={true} maxLength={20} label="Name" placeholder="Name" />
                             </div>
                             <div className="form-group col-md-6">
-                                <NumberInput id="input_amount"
-                                    value={formState.amount.value}
-                                    field="amount"
-                                    onChange={hasAmountChanged}
-                                    max={1000}
-                                    min={0}
-                                    label="Amount" />
+                                <NumberInput id="input_amount" value={formState.amount.value} field="amount" onChange={hasAmountChanged} max={1000} min={0} label="Amount" />
                             </div>
 
                             <div className="form-group col-md-6">
-                                <NumberInput id="input_totalPrice"
-                                    value={formState.totalPrice.value}
-                                    field="totalPrice"
-                                    onChange={hasFormValueChanged}
-                                    max={1000}
-                                    min={0}
-                                    label="Price" />
+                                <NumberInput id="input_totalPrice" value={formState.totalPrice.value} field="totalPrice" onChange={hasFormValueChanged} max={1000} min={0} label="Price" />
                             </div>
                         </div>
-                        <button className="btn btn-danger" onClick={() => resetForm()}>Reset</button>
-                        <button type="submit" className={`btn btn-success left-margin ${getDisabledClass()}`}>Create</button>
+                        <button className="btn btn-danger" onClick={() => resetForm()}>
+                            Reset
+                        </button>
+                        <button type="submit" className={`btn btn-success left-margin ${getDisabledClass()}`}>
+                            Create
+                        </button>
                     </form>
                 </div>
             </div>

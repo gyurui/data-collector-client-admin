@@ -1,24 +1,25 @@
 import React, { Fragment, Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentPath } from "../../store/actions/RootActions";
-import { IOrder } from "../../store/models/order.interface";
+import { updateCurrentPath } from "@actions/RootActions";
+import { Order } from "@models/OrderInterface";
 import OrderList from "./OrderList";
-import TopCard from "../../common/components/TopCard";
+import TopCard from "@common/components/TopCard";
 import OrderForm from "./OrderForm";
 import ProductList from "../Products/ProductsList";
-import { IProduct } from "../../store/models/product.interface";
-import { changeSelectedProduct, clearSelectedProduct } from "../../store/actions/ProductsAction";
-import { IStateType } from "../../store/models/root.interface";
+import { Product } from "@models/ProductInterface";
+import { StateType } from "@models/RootInterface";
+import { ReduxActions } from "@actions/ReduxActions";
+import { changeSelectedProduct, clearSelectedProduct } from "@actions/ProductsActions";
 
 const Orders: React.FC = () => {
-    const dispatch: Dispatch<any> = useDispatch();
-    const orders: IOrder[] = useSelector((state: IStateType) => state.orders.orders);
+    const dispatch: Dispatch<ReduxActions> = useDispatch();
+    const orders: Order[] = useSelector((state: StateType) => state.orders.orders);
     const totalSales: number = orders.reduce((prev, next) => prev + next.totalPrice, 0);
     const totalAmount: number = orders.reduce((prev, next) => prev + next.amount, 0);
     dispatch(updateCurrentPath("orders", "list"));
     dispatch(clearSelectedProduct());
 
-    function selectProduct(product: IProduct): void {
+    function selectProduct(product: Product): void {
         dispatch(changeSelectedProduct(product));
     }
 
@@ -37,8 +38,7 @@ const Orders: React.FC = () => {
                     <div className="card shadow mb-4">
                         <div className="card-header py-3">
                             <h6 className="m-0 font-weight-bold text-green">Order List</h6>
-                            <div className="header-buttons">
-                            </div>
+                            <div className="header-buttons" />
                         </div>
                         <div className="card-body">
                             <OrderList />
@@ -56,14 +56,12 @@ const Orders: React.FC = () => {
                         <div className="card-header py-3">
                             <h6 className="m-0 font-weight-bold text-green">Product list</h6>
                         </div>
-                        <ProductList
-                            onSelect={selectProduct}
-                        />
+                        <ProductList onSelect={selectProduct} />
                     </div>
                 </div>
             </div>
         </Fragment>
-    )
-}
+    );
+};
 
 export default Orders;

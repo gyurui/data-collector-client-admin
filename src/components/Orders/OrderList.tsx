@@ -1,22 +1,22 @@
-import React, { } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { IOrder } from "../../store/models/order.interface";
-import { IStateType } from "../../store/models/root.interface";
+import { Order } from "@models/OrderInterface";
+import { StateType } from "@models/RootInterface";
 
 const OrderList: React.FC = () => {
-    const orders: IOrder[] = useSelector((state: IStateType) => state.orders.orders);
+    const orders: Order[] = useSelector((state: StateType) => state.orders.orders);
 
-    const orderList: JSX.Element[] = orders.map(order => {
+    const orderList: JSX.Element[] = orders.map((order) => {
         return (
-            <tr className={`table-row`}
-                key={`order_${order.id}`}>
+            <tr className={"table-row"} key={`order_${order.id}`}>
                 <th scope="row">{order.id}</th>
                 <td>{order.name}</td>
                 <td>{order.product.name}</td>
                 <td>{order.amount}</td>
                 <td>{order.totalPrice}</td>
-            </tr>);
-    })
+            </tr>
+        );
+    });
 
     return (
         <div className="table-responsive portlet">
@@ -30,12 +30,10 @@ const OrderList: React.FC = () => {
                         <th scope="col">Total price</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {orderList}
-                </tbody>
+                <tbody>{orderList}</tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 export default OrderList;

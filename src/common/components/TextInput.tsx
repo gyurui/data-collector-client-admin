@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { TextInputProps } from "../types/TextInputTypes";
+import { TextInputProps } from "@models/TextInputTypes";
 
 function TextInput(props: TextInputProps): JSX.Element {
     const [touched, setTouch] = useState(false);
@@ -7,19 +7,21 @@ function TextInput(props: TextInputProps): JSX.Element {
     const [htmlClass, setHtmlClass] = useState("");
     const [, setValue] = useState("");
 
-
     function onValueChanged(event: ChangeEvent<HTMLInputElement>): void {
-        let [error, validClass, elementValue] = ["", "", event.target.value];
-
-        [error, validClass] = (!elementValue && props.required) ?
-            ["Value cannot be empty", "is-invalid"] : ["", "is-valid"];
+        const elementValue = event.target.value;
+        let [error, validClass] = !elementValue && props.required ? ["Value cannot be empty", "is-invalid"] : ["", "is-valid"];
 
         if (!error) {
-            [error, validClass] = (props.maxLength && elementValue && elementValue.length > (props.maxLength)) ?
-            [`Value can't have more than ${props.maxLength} characters`, "is-invalid"] : ["", "is-valid"];
+            [error, validClass] =
+                props.maxLength && elementValue && elementValue.length > props.maxLength ? [`Value can't have more than ${props.maxLength} characters`, "is-invalid"] : ["", "is-valid"];
         }
 
-        props.onChange({ value: elementValue, error: error, touched: touched, field: props.field });
+        props.onChange({
+            value: elementValue,
+            error: error,
+            touched: touched,
+            field: props.field,
+        });
 
         setTouch(true);
         setError(error);
@@ -36,12 +38,9 @@ function TextInput(props: TextInputProps): JSX.Element {
                 onChange={onValueChanged}
                 className={`form-control ${props.inputClass} ${htmlClass}`}
                 id={`id_${props.label}`}
-                placeholder={props.placeholder} />
-            {error ?
-                <div className="invalid-feedback">
-                    {error}
-                </div> : null
-            }
+                placeholder={props.placeholder}
+            />
+            {error ? <div className="invalid-feedback">{error}</div> : null}
         </div>
     );
 }
