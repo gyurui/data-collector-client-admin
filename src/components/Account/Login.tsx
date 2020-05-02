@@ -56,36 +56,27 @@ const Login: React.FC = () => {
     return (
         <Container>
             <Box className={classes.root}>
-                            <Box className={classes.box}>
-                                <TextInput
-                                    id="input_email"
-                                    field="email"
-                                    value={formState.email.value}
-                                    onChange={hasFormValueChanged}
-                                    required={true}
-                                    maxLength={100}
-                                    label="Email"
-                                    placeholder="Email"
-                                />
-                            </Box>
-                            <Box className={classes.box}>
-                                <TextInput
-                                    id="input_password"
-                                    field="password"
-                                    value={formState.password.value}
-                                    onChange={hasFormValueChanged}
-                                    required={true}
-                                    maxLength={100}
-                                    type="password"
-                                    label="Password"
-                                    placeholder="Password"
-                                />
-                            </Box>
-                            <Box className={classes.box}>
-                                <Button variant="contained" color="primary" type="submit">
-                                    Login
-                                </Button>
-                            </Box>
+                <Box className={classes.box}>
+                    <TextInput id="input_email" field="email" value={formState.email.value} onChange={hasFormValueChanged} required={true} maxLength={100} label="Email" placeholder="Email" />
+                </Box>
+                <Box className={classes.box}>
+                    <TextInput
+                        id="input_password"
+                        field="password"
+                        value={formState.password.value}
+                        onChange={hasFormValueChanged}
+                        required={true}
+                        maxLength={100}
+                        type="password"
+                        label="Password"
+                        placeholder="Password"
+                    />
+                </Box>
+                <Box className={classes.box}>
+                    <Button variant="contained" color="primary" type="submit">
+                        Login
+                    </Button>
+                </Box>
             </Box>
         </Container>
     );
