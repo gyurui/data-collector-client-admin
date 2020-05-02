@@ -10,9 +10,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { Provider } from "react-redux";
 import store from "./Store";
+import { CssBaseline } from "@material-ui/core";
 
 ReactDOM.render(
     <Provider store={store}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
         <App />
     </Provider>,
     document.getElementById("root"),

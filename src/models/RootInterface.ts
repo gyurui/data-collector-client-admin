@@ -3,6 +3,7 @@ import { Notification } from "./NotificationInterface";
 import { User } from "./UserInterface";
 import { Order } from "./OrderInterface";
 import { Account } from "./AccountInterface";
+import { Measurement, MeasurementModificationStatus } from "./MeasurementInterface";
 
 export interface RootPageStateType {
     area: string;
@@ -19,12 +20,19 @@ export interface StateType {
     users: UserState;
     orders: OrdersState;
     account: Account;
+    measurements: MeasurementState;
 }
 
 export interface ProductState {
     products: Product[];
     selectedProduct: Product | null;
     modificationState: ProductModificationStatus;
+}
+
+export interface MeasurementState {
+    measurements: Measurement[];
+    selectedMeasurement: Measurement | null;
+    modificationState: MeasurementModificationStatus;
 }
 
 export interface OrdersState {

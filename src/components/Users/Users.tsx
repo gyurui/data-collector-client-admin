@@ -24,8 +24,8 @@ const Users: React.FC = () => {
 
     const userElements: JSX.Element[] = users.map((user) => {
         return (
-            <tr className={"table-row"} key={`user_${user.id}`}>
-                <th scope="row">{user.id}</th>
+            <tr className={"table-row"} key={`user_${user._id}`}>
+                <th scope="row">{user._id}</th>
                 <td>{user.firstName}</td>
                 <td>{user.lastName}</td>
                 <td>{user.email}</td>
@@ -40,8 +40,8 @@ const Users: React.FC = () => {
 
     const adminElements: JSX.Element[] = admins.map((admin) => {
         return (
-            <tr className={"table-row"} key={`user_${admin.id}`}>
-                <th scope="row">{admin.id}</th>
+            <tr className={"table-row"} key={`user_${admin._id}`}>
+                <th scope="row">{admin._id}</th>
                 <td>{admin.firstName}</td>
                 <td>{admin.lastName}</td>
                 <td>{admin.email}</td>

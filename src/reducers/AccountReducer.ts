@@ -3,7 +3,7 @@ import { AccountActionTypeName } from "../actions/AccountActions";
 import { Account } from "../models/AccountInterface";
 
 const initialState: Account = {
-    email: "admin@gmail.com",
+    email: "",
 };
 
 function accountReducer(state: Account = initialState, action: ReduxActions): Account {

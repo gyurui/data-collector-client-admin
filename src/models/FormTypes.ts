@@ -21,6 +21,12 @@ export interface ProductFormState {
     category: FormStateField<string>;
 }
 
+export interface MeasurementFormState {
+    name: FormStateField<string>;
+    description: FormStateField<string>;
+    ownerUser: FormStateField<string>;
+}
+
 export interface OrderFormState {
     name: FormStateField<string>;
     product: FormStateField<Product | null>;

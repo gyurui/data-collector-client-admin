@@ -7,6 +7,7 @@ import accountReducer from "./AccountReducer";
 import { RootStateType, StateType } from "../models/RootInterface";
 import { ReduxActions } from "../actions/ReduxActions";
 import { RootActionsTypesName } from "../actions/RootActions";
+import measurementsReducer from "./MeasurementReducer";
 
 const initialState: RootStateType = {
     page: { area: "home", subArea: "" },
@@ -28,6 +29,7 @@ const rootReducers: Reducer<StateType> = combineReducers({
     users: userReducer,
     orders: orderReducer,
     account: accountReducer,
+    measurements: measurementsReducer,
 });
 
 export default rootReducers;
