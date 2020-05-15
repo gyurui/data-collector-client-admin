@@ -23,10 +23,10 @@ const LeftMenu: React.FC = () => {
             <ul className={`navbar-nav bg-gradient-primary-green sidebar sidebar-dark accordion ${getCollapseClass()}`} id="collapseMenu">
                 <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                     <div className="sidebar-brand-icon icon-green rotate-n-15">
-                        <i className="fas fa-bolt" />
+                        <i className="fab fa-react" />
                     </div>
                     <div className="sidebar-brand-text mx-3">
-                        REACT <sup>Admin</sup>
+                        DMS <sup>Admin</sup>
                     </div>
                 </a>
 
@@ -40,21 +40,15 @@ const LeftMenu: React.FC = () => {
                 </li>
 
                 <hr className="sidebar-divider" />
-                <div className="sidebar-heading">Warehouse</div>
+                <div className="sidebar-heading">Measurements</div>
 
                 <li className="nav-item">
-                    <Link className="nav-link" to={"/products"}>
+                    <Link className="nav-link" to={"/measurements"}>
                         <i className="fas fa-fw fa-warehouse" />
-                        <span>Products</span>
+                        <span>Measurements</span>
                     </Link>
                 </li>
 
-                <li className="nav-item">
-                    <Link className="nav-link" to={"/orders"}>
-                        <i className="fas fa-fw fa-cat" />
-                        <span>Orders</span>
-                    </Link>
-                </li>
 
                 <hr className="sidebar-divider" />
 

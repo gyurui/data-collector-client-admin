@@ -31,7 +31,9 @@ function TextInput(props: TextInputProps): JSX.Element {
 
     return (
         <div>
-            <label htmlFor={props.id.toString()}>{props.label}</label>
+            <label className={"label"} htmlFor={props.id.toString()}>
+                {props.label}
+            </label>
             <input
                 value={props.value}
                 type={props.type}

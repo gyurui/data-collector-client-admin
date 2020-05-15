@@ -1,14 +1,27 @@
-import React, { Fragment } from "react";
+import React, { Dispatch, useEffect, Fragment } from "react";
 import LeftMenu from "../LeftMenu/LeftMenu";
 import TopMenu from "../TopMenu/TopMenu";
 import { Switch, Route } from "react-router";
 import Users from "../Users/Users";
-import Products from "../Products/Products";
 import Orders from "../Orders/Orders";
 import Home from "../Home/Home";
 import Notifications from "../../common/components/Notification";
+import Measurements from "../Measurements/Measurements";
+import { ApiServices } from "../../services/ApiServices";
+import { useDispatch, useSelector } from "react-redux";
+import { ReduxActions } from "../../actions/ReduxActions";
+import { StateType } from "../../models/RootInterface";
 
 const Admin: React.FC = () => {
+    const dispatch: Dispatch<ReduxActions> = useDispatch();
+    const token: string = useSelector((state: StateType) => state.account.token);
+
+    useEffect(() => {
+        console.log(token);
+        ApiServices.getUsers(dispatch, token);
+        ApiServices.getMeasurements(dispatch);
+    });
+
     return (
         <Fragment>
             <Notifications />
@@ -21,8 +34,8 @@ const Admin: React.FC = () => {
                             <Route path={"/users"}>
                                 <Users />
                             </Route>
-                            <Route path={"/products"}>
-                                <Products />
+                            <Route path={"/measurements"}>
+                                <Measurements />
                             </Route>
                             <Route path={"/orders"}>
                                 <Orders />

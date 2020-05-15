@@ -3,8 +3,8 @@ export enum AccountActionTypeName {
     logOut = "LOG_OUT",
 }
 
-export function login(email: string): LogInActionType {
-    return { type: AccountActionTypeName.logIn, email: email };
+export function login(email: string, token: string): LogInActionType {
+    return { type: AccountActionTypeName.logIn, email: email, token: token };
 }
 
 export function logout(): LogOutActionType {
@@ -14,6 +14,7 @@ export function logout(): LogOutActionType {
 interface LogInActionType {
     type: AccountActionTypeName.logIn;
     email: string;
+    token: string;
 }
 interface LogOutActionType {
     type: AccountActionTypeName.logOut;
