@@ -8,6 +8,7 @@ import { AccountRoute } from "./common/components/AccountRoute";
 import Login from "./components/Account/Login";
 
 const App: React.FC = () => {
+
     return (
         <div className="App" id="wrapper">
             <Router>
