@@ -1,18 +1,10 @@
-import React, { useState, FormEvent, Fragment, Dispatch } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ReduxActions } from "../../actions/ReduxActions";
-import { Product } from "../../models/ProductInterface";
-import { StateType } from "../../models/RootInterface";
+import React, { useState, FormEvent, Fragment } from "react";
+
 import { OnChangeModel, OrderFormState } from "../../models/FormTypes";
-import { addOrder } from "../../actions/OrdersActions";
-import { addNotification } from "../../actions/NotificationsActions";
-import { changeProductAmount, clearSelectedProduct } from "../../actions/ProductsActions";
 import TextInput from "../../common/components/TextInput";
 import NumberInput from "../../common/components/NumberInput";
 
 const OrderForm: React.FC = () => {
-    const dispatch: Dispatch<ReduxActions> = useDispatch();
-    const selectedProduct: Product | null = useSelector((state: StateType) => state.products.selectedProduct);
     const initialFormState: OrderFormState = {
         name: { error: "", value: "" },
         product: { error: "", value: null },
@@ -23,15 +15,10 @@ const OrderForm: React.FC = () => {
     const [formState, setFormState] = useState(initialFormState);
 
     function hasAmountChanged(model: OnChangeModel): void {
-        let totalPrice: number = formState.totalPrice.value;
-        if (selectedProduct) {
-            totalPrice = selectedProduct.price * (model.value as number);
-        }
-
         setFormState({
             ...formState,
             amount: { error: model.error, value: model.value as number },
-            totalPrice: { error: model.error, value: totalPrice },
+            totalPrice: { error: model.error, value: 0 },
         });
     }
 
@@ -56,32 +43,32 @@ const OrderForm: React.FC = () => {
     }
 
     function saveForm(formState: OrderFormState): void {
-        if (selectedProduct) {
-            if (selectedProduct.amount < formState.amount.value) {
-                alert("Not enough products in warehouse");
-                return;
-            }
-
-            formState.product.value = selectedProduct;
-            dispatch(
-                addOrder({
-                    id: 0,
-                    name: formState.name.value,
-                    amount: formState.amount.value,
-                    totalPrice: formState.totalPrice.value,
-                    product: formState.product.value as Product,
-                }),
-            );
-
-            dispatch(addNotification("Order added", `Order ${formState.name.value} added by you`));
-            dispatch(clearSelectedProduct());
-            dispatch(changeProductAmount(selectedProduct.id, formState.amount.value));
-            resetForm();
-        }
+        // if (selectedProduct) {
+        //     if (selectedProduct.amount < formState.amount.value) {
+        //         alert("Not enough products in warehouse");
+        //         return;
+        //     }
+        //
+        //     formState.product.value = selectedProduct;
+        //     // dispatch(
+        //     //     addOrder({
+        //     //         id: 0,
+        //     //         name: formState.name.value,
+        //     //         amount: formState.amount.value,
+        //     //         totalPrice: formState.totalPrice.value,
+        //     //         product: formState.product.value as Product,
+        //     //     }),
+        //     // );
+        //     //
+        //     // dispatch(addNotification("Order added", `Order ${formState.name.value} added by you`));
+        //     // dispatch(clearSelectedProduct());
+        //     // dispatch(changeProductAmount(selectedProduct.id, formState.amount.value));
+        //     resetForm();
+        // }
     }
 
     function isFormInvalid(): boolean {
-        return (formState.amount.error || formState.totalPrice.error || formState.name.error || formState.product.error || !formState.name.value || !selectedProduct) as boolean;
+        return (formState.amount.error || formState.totalPrice.error || formState.name.error || formState.product.error || !formState.name.value) as boolean;
     }
 
     function getDisabledClass(): string {

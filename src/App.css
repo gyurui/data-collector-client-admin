@@ -50,18 +50,27 @@ body {
     color: dodgerblue !important;
 }
 
+.label {
+    color: white !important;
+}
+
 .card-bottom-list {
     max-height: 303px;
 }
 
-.bg-login-image {
-    background: url("./assets/login.png") !important;
-    background-position: center !important;
-    background-size: cover !important;
+.bg-color {
+    background-color: #333241;
+}
+
+.log {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
 }
 
 .bg-gradient-primary-green {
-    background-image: linear-gradient(180deg,#0e1e24 10%, #00c6b6 100%);
+    background-image: linear-gradient(180deg,#0e1e24 10%, #81BC00 100%);
     background-size: cover;
 }
 

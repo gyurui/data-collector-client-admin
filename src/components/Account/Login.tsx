@@ -4,25 +4,11 @@ import { ReduxActions } from "../../actions/ReduxActions";
 import { OnChangeModel } from "../../models/FormTypes";
 import TextInput from "../../common/components/TextInput";
 import { login } from "../../actions/AccountActions";
-import Button from "@material-ui/core/Button";
-import { Box, Container, Theme } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        backgroundColor: "blue",
-    },
-    box: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        backgroundColor: "green",
-    },
-}));
+import { Image } from "react-bootstrap";
+import { ApiServices } from "../../services/ApiServices";
 
 const Login: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();
-    const classes = useStyles();
 
     const [formState, setFormState] = useState({
         email: { error: "", value: "" },
@@ -36,12 +22,18 @@ const Login: React.FC = () => {
         });
     }
 
-    function submit(e: FormEvent<HTMLFormElement>): void {
+    async function submit(e: FormEvent<HTMLFormElement>): Promise<void> {
         e.preventDefault();
         if (isFormInvalid()) {
             return;
         }
-        dispatch(login(formState.email.value));
+        try {
+            const response = await ApiServices.login(formState.email.value, formState.password.value);
+            console.log(response);
+            dispatch(login(formState.email.value, response));
+        } catch (e) {
+            return;
+        }
     }
 
     function isFormInvalid() {
@@ -56,15 +48,17 @@ const Login: React.FC = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
-                <div className="col-xl-10 col-lg-12 col-md-9">
-                    <div className="card o-hidden border-0 shadow-lg my-5">
-                        <div className="card-body p-0">
+                <div className="col-xl-10 col-lg-12 col-md-9 ">
+                    <div className="card o-hidden border-0 my-5">
+                        <div className="card-body p-0 bg-color">
                             <div className="row">
-                                <div className="col-lg-6 d-none d-lg-block bg-login-image" />
+                                <div className={"log"}>
+                                    <Image width={300} src={"./logo.png"} />
+                                </div>
                                 <div className="col-lg-6">
                                     <div className="p-5">
                                         <div className="text-center">
-                                            <h1 className="h4 text-gray-900 mb-4">Welcome!</h1>
+                                            <h1 className="h4 text-white mb-4">Log in in to the DMS!</h1>
                                         </div>
                                         <form className="user" onSubmit={submit}>
                                             <div className="form-group">
@@ -95,7 +89,7 @@ const Login: React.FC = () => {
                                             <div className="form-group">
                                                 <div className="custom-control custom-checkbox small">
                                                     <input type="checkbox" className="custom-control-input" id="customCheck" />
-                                                    <label className="custom-control-label" htmlFor="customCheck">
+                                                    <label className="custom-control-label label" htmlFor="customCheck">
                                                         Remember Me
                                                     </label>
                                                 </div>

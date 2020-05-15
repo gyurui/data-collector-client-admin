@@ -12,6 +12,10 @@ import { Measurement, MeasurementModificationStatus } from "../../models/Measure
 import TopCard from "../../common/components/TopCard";
 import { addNotification } from "../../actions/NotificationsActions";
 import { ApiServices } from "../../services/ApiServices";
+import { SensorChartWithThreeLine } from "../../common/components/ChartWithThreeLine";
+import { Data } from "../../models/Data";
+import TextInput from "../../common/components/TextInput";
+import { OnChangeModel } from "../../models/FormTypes";
 
 const Measurements: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();
@@ -20,7 +24,8 @@ const Measurements: React.FC = () => {
     const numberItemsCount: number = measurements.measurements.length;
     const [popup, setPopup] = useState(false);
     const [started, setStarted] = useState(false);
-    const [fetchedData, setFetchedData] = useState("");
+    const [comment, setComment] = useState("");
+    const [fetchedData, setFetchedData] = useState([] as Data[]);
     let timerId: any = null;
 
     useEffect(() => {
@@ -40,7 +45,7 @@ const Measurements: React.FC = () => {
     }
 
     const downloadData = async () => {
-        const data = await ApiServices.getData();
+        const data = await ApiServices.getData(measurements.selectedMeasurement?._id ?? "");
         setFetchedData(data);
     };
 
@@ -53,6 +58,10 @@ const Measurements: React.FC = () => {
             }, 1000);
         }
     };
+
+    function hasFormValueChanged(model: OnChangeModel): void {
+        setComment(model.value.toString());
+    }
 
     function stopMeasurementFn() {
         if (measurements.selectedMeasurement) {
@@ -70,7 +79,7 @@ const Measurements: React.FC = () => {
             <h1 className="h3 mb-2 text-gray-800">Measurements</h1>
             <p className="mb-4">Measurements here</p>
             <div className="row">
-                <TopCard title="MEASUREMENTS COUNT" text={`${numberItemsCount}`} icon="box" class="primary" />
+                <TopCard title="MEASUREMENTS COUNT" text={`${numberItemsCount}`} icon="warehouse" class="primary" />
             </div>
 
             <div className="row">
@@ -123,7 +132,55 @@ const Measurements: React.FC = () => {
                         >
                             Stop Measurement
                         </button>
+                        <div className="form-group">
+                            <TextInput
+                                id="input_comment"
+                                field="comment"
+                                value={comment}
+                                onChange={hasFormValueChanged}
+                                required={false}
+                                maxLength={100}
+                                label="comment"
+                                placeholder="Write here some important comments"
+                            />
+                        </div>
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => {
+                                setComment("");
+                            }}
+                        >
+                            Comment
+                        </button>
                         <div>
+                            <SensorChartWithThreeLine
+                                title={"Accelerometer"}
+                                xLabelTitle={"Time [s]"}
+                                yLabelTitle={"Accelerometer [g]"}
+                                x={fetchedData.map((value) => {
+                                    return value.measuredValues.accelerometerX ?? 0;
+                                })}
+                                y={fetchedData.map((value) => {
+                                    return value.measuredValues.accelerometerY ?? 0;
+                                })}
+                                z={fetchedData.map((value) => {
+                                    return value.measuredValues.accelerometerZ ?? 0;
+                                })}
+                            />
+                            <SensorChartWithThreeLine
+                                title={"Magnetometer"}
+                                xLabelTitle={"Time [s]"}
+                                yLabelTitle={"Magentometer [g]"}
+                                x={fetchedData.map((value) => {
+                                    return value.measuredValues.magnetometerX ?? 0;
+                                })}
+                                y={fetchedData.map((value) => {
+                                    return value.measuredValues.magnetometerY ?? 0;
+                                })}
+                                z={fetchedData.map((value) => {
+                                    return value.measuredValues.magnetometerZ ?? 0;
+                                })}
+                            />
                             <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
                         </div>
                     </div>

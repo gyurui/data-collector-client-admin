@@ -15,10 +15,8 @@ export interface RootStateType {
 }
 export interface StateType {
     root: RootStateType;
-    products: ProductState;
     notifications: NotificationState;
     users: UserState;
-    orders: OrdersState;
     account: Account;
     measurements: MeasurementState;
 }

@@ -1,8 +1,16 @@
 import { createStore, applyMiddleware, Store } from "redux";
 import thunkMiddleware from "redux-thunk";
 import rootReducers from "./reducers/RootReducer";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const store: Store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
+const persistConfig = {
+    blacklist: ["notification"],
+    key: "reactredux",
+    storage,
+};
 
-store.subscribe(() => {});
+const persistedReducer = persistReducer(persistConfig, rootReducers);
+const store: Store = createStore(persistedReducer, applyMiddleware(thunkMiddleware));
+
 export default store;

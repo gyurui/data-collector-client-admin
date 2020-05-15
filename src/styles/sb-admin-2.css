@@ -10587,6 +10587,7 @@ a:focus {
   background: url("../../public/login.png");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bg-register-image {
@@ -10594,7 +10595,7 @@ a:focus {
   background-position: center;
   background-size: cover;
 }
- 
+
 .bg-password-image {
   background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
   background-position: center;

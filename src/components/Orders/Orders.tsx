@@ -1,26 +1,21 @@
 import React, { Fragment, Dispatch } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import OrderList from "./OrderList";
 import OrderForm from "./OrderForm";
-import ProductList from "../Products/ProductsList";
 import { ReduxActions } from "../../actions/ReduxActions";
-import { Order } from "../../models/OrderInterface";
-import { StateType } from "../../models/RootInterface";
 import { updateCurrentPath } from "../../actions/RootActions";
-import { changeSelectedProduct, clearSelectedProduct } from "../../actions/ProductsActions";
-import { Product } from "../../models/ProductInterface";
 import TopCard from "../../common/components/TopCard";
+import MeasurementList from "../Measurements/MeasurementsList";
+import { Measurement } from "../../models/MeasurementInterface";
 
 const Orders: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();
-    const orders: Order[] = useSelector((state: StateType) => state.orders.orders);
-    const totalSales: number = orders.reduce((prev, next) => prev + next.totalPrice, 0);
-    const totalAmount: number = orders.reduce((prev, next) => prev + next.amount, 0);
-    dispatch(updateCurrentPath("orders", "list"));
-    dispatch(clearSelectedProduct());
 
-    function selectProduct(product: Product): void {
-        dispatch(changeSelectedProduct(product));
+    dispatch(updateCurrentPath("orders", "list"));
+    //dispatch(clearSelectedProduct());
+
+    function selectProduct(meASUREMENT: Measurement): void {
+        //dispatch(changeSelectedProduct(product));
     }
 
     return (
@@ -29,8 +24,8 @@ const Orders: React.FC = () => {
             <p className="mb-4">Orders here</p>
 
             <div className="row">
-                <TopCard title="TOTAL SALES" text={totalSales.toString()} icon="donate" class="primary" />
-                <TopCard title="TOTAL AMOUNT" text={totalAmount.toString()} icon="calculator" class="danger" />
+                <TopCard title="TOTAL SALES" text={""} icon="donate" class="primary" />
+                <TopCard title="TOTAL AMOUNT" text={""} icon="calculator" class="danger" />
             </div>
 
             <div className="row">
@@ -56,7 +51,7 @@ const Orders: React.FC = () => {
                         <div className="card-header py-3">
                             <h6 className="m-0 font-weight-bold text-green">Product list</h6>
                         </div>
-                        <ProductList onSelect={selectProduct} />
+                        <MeasurementList onSelect={selectProduct} />
                     </div>
                 </div>
             </div>

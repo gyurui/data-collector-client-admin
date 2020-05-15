@@ -26,7 +26,7 @@ const LeftMenu: React.FC = () => {
                         <i className="fab fa-react" />
                     </div>
                     <div className="sidebar-brand-text mx-3">
-                        REACT <sup>Admin</sup>
+                        DMS <sup>Admin</sup>
                     </div>
                 </a>
 

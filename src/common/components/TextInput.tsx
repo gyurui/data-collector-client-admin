@@ -1,14 +1,11 @@
 import React, { useState, ChangeEvent } from "react";
 import { TextInputProps } from "../../models/TextInputTypes";
-import { TextField } from "@material-ui/core";
-
 
 function TextInput(props: TextInputProps): JSX.Element {
     const [touched, setTouch] = useState(false);
     const [error, setError] = useState("");
     const [htmlClass, setHtmlClass] = useState("");
     const [, setValue] = useState("");
-
 
     function onValueChanged(event: ChangeEvent<HTMLInputElement>): void {
         const elementValue = event.target.value;
@@ -32,7 +29,22 @@ function TextInput(props: TextInputProps): JSX.Element {
         setValue(elementValue);
     }
 
-    return <TextField id="standard-basic" label={props.placeholder} value={props.value} type={props.type} onChange={onValueChanged} error={error !== ""} helperText={error} />;
+    return (
+        <div>
+            <label className={"label"} htmlFor={props.id.toString()}>
+                {props.label}
+            </label>
+            <input
+                value={props.value}
+                type={props.type}
+                onChange={onValueChanged}
+                className={`form-control ${props.inputClass} ${htmlClass}`}
+                id={`id_${props.label}`}
+                placeholder={props.placeholder}
+            />
+            {error ? <div className="invalid-feedback">{error}</div> : null}
+        </div>
+    );
 }
 
 export default TextInput;

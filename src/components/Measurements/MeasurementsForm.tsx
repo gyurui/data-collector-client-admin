@@ -8,7 +8,7 @@ import { addMeasurement, clearSelectedMeasurement, editMeasurement, setModificat
 import { addNotification } from "../../actions/NotificationsActions";
 import TextInput from "../../common/components/TextInput";
 import SelectInput from "../../common/components/Select";
-import {ApiServices} from "../../services/ApiServices";
+import { ApiServices } from "../../services/ApiServices";
 
 const MeasurementForm: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();

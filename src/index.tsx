@@ -11,12 +11,16 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import store from "./Store";
 import { CssBaseline } from "@material-ui/core";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.render(
     <Provider store={store}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <App />
+        <PersistGate persistor={persistStore(store)}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <App />
+        </PersistGate>
     </Provider>,
     document.getElementById("root"),
 );

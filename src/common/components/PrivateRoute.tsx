@@ -8,5 +8,5 @@ import { Account } from "../../models/AccountInterface";
 export function PrivateRoute({ children, ...rest }: RouteProps): JSX.Element {
     const account: Account = useSelector((state: StateType) => state.account);
 
-    return <Route {...rest} render={() => (account.email ? children : <Login />)} />;
+    return <Route {...rest} render={() => (account.token ? children : <Login />)} />;
 }
