@@ -18,7 +18,6 @@ const Home: React.FC = () => {
             <Jumbotron>
                 <h1>Data Measurement Sytem </h1>
                 <p>Welcome to the data measurement admin site, this site will generate riports from your actual measurements</p>
-
             </Jumbotron>
             <h1 className="h3 mb-2 text-gray-800">Dashboard</h1>
             <p className="mb-4">Summary and overview of our admin stuff here</p>
