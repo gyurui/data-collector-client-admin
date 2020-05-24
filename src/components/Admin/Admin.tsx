@@ -3,21 +3,20 @@ import LeftMenu from "../LeftMenu/LeftMenu";
 import TopMenu from "../TopMenu/TopMenu";
 import { Switch, Route } from "react-router";
 import Users from "../Users/Users";
-import Orders from "../Orders/Orders";
-import Home from "../Home/Home";
+import Home from "../Dashboard/Home";
 import Notifications from "../../common/components/Notification";
 import Measurements from "../Measurements/Measurements";
 import { ApiServices } from "../../services/ApiServices";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxActions } from "../../actions/ReduxActions";
 import { StateType } from "../../models/RootInterface";
+import Reports from "../Reports/Reports";
 
 const Admin: React.FC = () => {
     const dispatch: Dispatch<ReduxActions> = useDispatch();
     const token: string = useSelector((state: StateType) => state.account.token);
 
     useEffect(() => {
-        console.log(token);
         ApiServices.getUsers(dispatch, token);
         ApiServices.getMeasurements(dispatch);
     });
@@ -37,8 +36,8 @@ const Admin: React.FC = () => {
                             <Route path={"/measurements"}>
                                 <Measurements />
                             </Route>
-                            <Route path={"/orders"}>
-                                <Orders />
+                            <Route path={"/reports"}>
+                                <Reports />
                             </Route>
                             <Route path="/">
                                 <Home />

@@ -19,7 +19,7 @@ const MeasurementForm: React.FC = () => {
 
     if (!measurement || isCreate) {
         measurement = {
-            _id: "0",
+            _id: "",
             name: "",
             description: "",
             ownerUser: "",
@@ -27,9 +27,9 @@ const MeasurementForm: React.FC = () => {
     }
 
     const [formState, setFormState] = useState({
-        name: { error: "", value: measurement.name },
-        description: { error: "", value: measurement.description },
-        ownerUser: { error: "", value: measurement.ownerUser },
+        name: { error: "", value: measurement?.name ?? "" },
+        description: { error: "", value: measurement?.description ?? "" },
+        ownerUser: { error: "", value: measurement?.ownerUser ?? "" },
     });
 
     function hasFormValueChanged(model: OnChangeModel): void {
@@ -50,10 +50,16 @@ const MeasurementForm: React.FC = () => {
     }
 
     function saveForm(formState: MeasurementFormState, saveFn: Function): void {
-        if (measurement) {
-            ApiServices.addMeasurement(measurement);
+        const newMeasurement = {
+            name: formState.name.value,
+            ownerUser: formState.ownerUser.value,
+            description: formState.description.value,
+        };
+        if (newMeasurement) {
+            ApiServices.addMeasurement(newMeasurement);
+            ApiServices.getMeasurements(dispatch);
 
-            dispatch(addNotification("Measurement edited", `Measurement ${formState.name.value} edited by you`));
+            dispatch(addNotification("Measurement added", `Measurement ${formState.name.value} edited by you`));
             dispatch(clearSelectedMeasurement());
             dispatch(setModificationState(MeasurementModificationStatus.None));
         }

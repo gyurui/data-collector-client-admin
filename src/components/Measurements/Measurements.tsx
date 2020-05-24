@@ -154,32 +154,40 @@ const Measurements: React.FC = () => {
                         </button>
                         <div>
                             <SensorChartWithThreeLine
-                                title={"Accelerometer"}
+                                title={"Left speed"}
                                 xLabelTitle={"Time [s]"}
-                                yLabelTitle={"Accelerometer [g]"}
+                                yLabelTitle={"Speed [m/s]"}
                                 x={fetchedData.map((value) => {
-                                    return value.measuredValues.accelerometerX ?? 0;
+                                    return value.measuredValues.leftDesiredSpeed ?? 0;
                                 })}
                                 y={fetchedData.map((value) => {
-                                    return value.measuredValues.accelerometerY ?? 0;
+                                    return value.measuredValues.leftMeasuredSpeed ?? 0;
                                 })}
-                                z={fetchedData.map((value) => {
-                                    return value.measuredValues.accelerometerZ ?? 0;
-                                })}
+                                z={[]}
                             />
                             <SensorChartWithThreeLine
-                                title={"Magnetometer"}
+                                title={"Right speed"}
                                 xLabelTitle={"Time [s]"}
-                                yLabelTitle={"Magentometer [g]"}
+                                yLabelTitle={"Speed [m/s]"}
                                 x={fetchedData.map((value) => {
-                                    return value.measuredValues.magnetometerX ?? 0;
+                                    return value.measuredValues.rightDesiredSpeed ?? 0;
                                 })}
                                 y={fetchedData.map((value) => {
-                                    return value.measuredValues.magnetometerY ?? 0;
+                                    return value.measuredValues.rightMeasuredSpeed ?? 0;
                                 })}
-                                z={fetchedData.map((value) => {
-                                    return value.measuredValues.magnetometerZ ?? 0;
+                                z={[]}
+                            />
+                            <SensorChartWithThreeLine
+                                title={"PID signal"}
+                                xLabelTitle={"Time [s]"}
+                                yLabelTitle={"Signal [mv]"}
+                                x={fetchedData.map((value) => {
+                                    return value.measuredValues.rightPidSignal ?? 0;
                                 })}
+                                y={fetchedData.map((value) => {
+                                    return value.measuredValues.leftPidSignal ?? 0;
+                                })}
+                                z={[]}
                             />
                             <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
                         </div>

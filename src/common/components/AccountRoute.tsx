@@ -2,7 +2,7 @@ import { Route, Redirect, RouteProps } from "react-router";
 import React from "react";
 import { useSelector } from "react-redux";
 import { StateType } from "../../models/RootInterface";
-import Login from "../../components/Account/Login";
+import Login from "../../components/Login/Login";
 import { Account } from "../../models/AccountInterface";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

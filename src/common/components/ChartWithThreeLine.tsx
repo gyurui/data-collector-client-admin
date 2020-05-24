@@ -12,8 +12,6 @@ interface Props {
 }
 
 export class SensorChartWithThreeLine extends React.Component<Props> {
-
-
     public render(): React.ReactElement {
         return (
             <>
@@ -25,7 +23,7 @@ export class SensorChartWithThreeLine extends React.Component<Props> {
                         data={this.props.x}
                         style={{
                             data: {
-                                stroke: Colors.white,
+                                stroke: Colors.black,
                             },
                             parent: {
                                 border: `1px solid ${Colors.midGray}`,

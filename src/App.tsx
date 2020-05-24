@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { PrivateRoute } from "./common/components/PrivateRoute";
 import Admin from "./components/Admin/Admin";
 import { AccountRoute } from "./common/components/AccountRoute";
-import Login from "./components/Account/Login";
+import Login from "./components/Login/Login";
 
 const App: React.FC = () => {
     return (

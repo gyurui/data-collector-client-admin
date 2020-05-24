@@ -76,13 +76,32 @@ export class ApiServices {
             });
     }
 
-    public static async addMeasurement(measurement: Measurement) {
+    public static async addMeasurement(measurement: { name: string; description: string; ownerUser: string }) {
         await fetch(ApiServices.address + "/measurement", {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
             method: "post",
+            body: JSON.stringify({ ...measurement }),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+                return res;
+            })
+            .catch((error) => {
+                //dispatch(fetchUsers(error));
+            });
+    }
+
+    public static async deleteMeasurement(measurement: Measurement) {
+        await fetch(ApiServices.address + "/measurement", {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            method: "delete",
             body: JSON.stringify({ measurement }),
         })
             .then((res) => res.json())
