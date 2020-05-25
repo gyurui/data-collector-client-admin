@@ -152,6 +152,14 @@ const Measurements: React.FC = () => {
                         >
                             Comment
                         </button>
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => {
+
+                            }}
+                        >
+                            Generate Pdf
+                        </button>
                         <div>
                             <SensorChartWithThreeLine
                                 title={"Left speed"}

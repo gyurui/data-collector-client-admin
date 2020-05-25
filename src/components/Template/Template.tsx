@@ -69,7 +69,7 @@ const Template: React.FC = () => {
                                 yLineTitle={"Left Pid Signal"}
                                 z={[]}
                             />
-                            <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
+                            {/*<pre>{JSON.stringify(fetchedData, null, 2)}</pre>*/}
                         </div>
                     )}
                 </div>
