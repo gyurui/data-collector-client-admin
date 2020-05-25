@@ -7,7 +7,7 @@ import { addMeasurements } from "../actions/MeasurementsActions";
 import { Data } from "../models/Data";
 
 export class ApiServices {
-    private static address = "https://dms-server.herokuapp.com";
+    private static address = "http://localhost:8080";
 
     public static async getUsers(dispatch: Dispatch<ReduxActions>, token: string) {
         await fetch(ApiServices.address + "/user", {

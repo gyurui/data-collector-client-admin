@@ -152,11 +152,10 @@ const Measurements: React.FC = () => {
                         >
                             Comment
                         </button>
+                        <div style={{margin: 10}} />
                         <button
                             className="btn btn-primary"
-                            onClick={() => {
-
-                            }}
+                            onClick={()=> window.open(`https://dms-server.herokuapp.com/generateReport/${measurements.selectedMeasurement?._id}`, "_blank")}
                         >
                             Generate Pdf
                         </button>
