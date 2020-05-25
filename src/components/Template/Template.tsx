@@ -25,51 +25,53 @@ const Template: React.FC = () => {
 
             <div className="row">
                 <div className="card-body">
-                    <div>
-                        <SensorChartWithThreeLine
-                            title={"Left speed"}
-                            xLabelTitle={"Sampling time [10 milli sec]"}
-                            yLabelTitle={"Speed [mm/s]"}
-                            x={fetchedData.map((value) => {
-                                return value.measuredValues.leftDesiredSpeed ?? 0;
-                            })}
-                            xLineTitle={"Left Desired Speed"}
-                            y={fetchedData.map((value) => {
-                                return value.measuredValues.leftMeasuredSpeed ?? 0;
-                            })}
-                            yLineTitle={"Left Measured Speed"}
-                            z={[]}
-                        />
-                        <SensorChartWithThreeLine
-                            title={"Right speed"}
-                            xLabelTitle={"Sampling time [10 milli sec]"}
-                            yLabelTitle={"Speed [mm/s]"}
-                            x={fetchedData.map((value) => {
-                                return value.measuredValues.rightDesiredSpeed ?? 0;
-                            })}
-                            xLineTitle={"Right Desired Speed"}
-                            y={fetchedData.map((value) => {
-                                return value.measuredValues.rightMeasuredSpeed ?? 0;
-                            })}
-                            yLineTitle={"Right Measured Speed"}
-                            z={[]}
-                        />
-                        <SensorChartWithThreeLine
-                            title={"PID signal"}
-                            xLabelTitle={"Sampling time [10 milli sec]"}
-                            yLabelTitle={"Signal [pwm]"}
-                            x={fetchedData.map((value) => {
-                                return value.measuredValues.rightPidSignal ?? 0;
-                            })}
-                            xLineTitle={"Right Pid Signal"}
-                            y={fetchedData.map((value) => {
-                                return value.measuredValues.leftPidSignal ?? 0;
-                            })}
-                            yLineTitle={"Left Pid Signal"}
-                            z={[]}
-                        />
-                        <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
-                    </div>
+                    {fetchedData.length !== 0 && (
+                        <div className="data">
+                            <SensorChartWithThreeLine
+                                title={"Left speed"}
+                                xLabelTitle={"Sampling time [10 milli sec]"}
+                                yLabelTitle={"Speed [mm/s]"}
+                                x={fetchedData.map((value) => {
+                                    return value.measuredValues.leftDesiredSpeed ?? 0;
+                                })}
+                                xLineTitle={"Left Desired Speed"}
+                                y={fetchedData.map((value) => {
+                                    return value.measuredValues.leftMeasuredSpeed ?? 0;
+                                })}
+                                yLineTitle={"Left Measured Speed"}
+                                z={[]}
+                            />
+                            <SensorChartWithThreeLine
+                                title={"Right speed"}
+                                xLabelTitle={"Sampling time [10 milli sec]"}
+                                yLabelTitle={"Speed [mm/s]"}
+                                x={fetchedData.map((value) => {
+                                    return value.measuredValues.rightDesiredSpeed ?? 0;
+                                })}
+                                xLineTitle={"Right Desired Speed"}
+                                y={fetchedData.map((value) => {
+                                    return value.measuredValues.rightMeasuredSpeed ?? 0;
+                                })}
+                                yLineTitle={"Right Measured Speed"}
+                                z={[]}
+                            />
+                            <SensorChartWithThreeLine
+                                title={"PID signal"}
+                                xLabelTitle={"Sampling time [10 milli sec]"}
+                                yLabelTitle={"Signal [pwm]"}
+                                x={fetchedData.map((value) => {
+                                    return value.measuredValues.rightPidSignal ?? 0;
+                                })}
+                                xLineTitle={"Right Pid Signal"}
+                                y={fetchedData.map((value) => {
+                                    return value.measuredValues.leftPidSignal ?? 0;
+                                })}
+                                yLineTitle={"Left Pid Signal"}
+                                z={[]}
+                            />
+                            <pre>{JSON.stringify(fetchedData, null, 2)}</pre>
+                        </div>
+                    )}
                 </div>
             </div>
         </Fragment>
